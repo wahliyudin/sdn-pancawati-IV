@@ -1,77 +1,150 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo_me.png') }}">
+    <!-- App title -->
+    <title>PPDB MAN 2 Model Medan - Registrasi</title>
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icons.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+    <style>
+        .account-logo-box {
+            background-color: #359e78;
+        }
+
+        label[for=filestyle-0] {
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+
+
+<body class="bg-transparent">
+
+    <!-- HOME -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="wrapper-page">
+
+                        <div class="m-t-40 account-pages">
+                            <div class="text-center account-logo-box">
+                                <div class="m-t-10 m-b-10">
+                                    <a href="{{ route('home') }}" class="text-success">
+                                        <span><img src="{{ asset('assets/images/logo_me.png') }}" alt=""
+                                                height="36"></span>
+                                        <h2 style="color:#FFF">BUAT AKUN</h2>
+                                    </a>
+                                </div>
+                                <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
+                            </div>
+                            <div class="account-content">
+                                <?php $setting = App\Models\Setting::first(); ?>
+                                @if ($setting && $setting->status_pendaftaran == 1)
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <input class="form-control @error('name') is-invalid @enderror"
+                                                    name="name" type="text" required="" placeholder="name"
+                                                    value="{{ old('name') }}">
+
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <input class="form-control @error('email') is-invalid @enderror"
+                                                    name="email" type="text" required="" placeholder="E-Mail"
+                                                    value="{{ old('email') }}">
+
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group account-btn text-center m-t-10">
+                                            <div class="col-12">
+                                                <button
+                                                    class="btn w-md btn-bordered btn-danger waves-effect waves-light"
+                                                    type="submit">Daftar</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                @else
+                                    <div class="text-center m-b-20">
+                                        <h3>Maaf !</h3>
+                                        <p class="text-muted font-13 m-t-10"> Pendaftaran Sedang di tutup. <br />
+                                            Silahkan lihat menu jadwal PPDB</p>
+                                    </div>
+                                @endif
+
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </div>
+                        <!-- end card-box-->
+
+
+                        <div class="row m-t-50">
+                            <div class="col-sm-12 text-center">
+                                <p class="text-muted">Sudah pernah mendaftar ? <a href="{{ route('login') }}"
+                                        class="text-primary m-l-5"><b>Log In</b></a></p>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                    </div>
+                    <!-- end wrapper -->
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </section>
+    <!-- END HOME -->
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- jQuery  -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('assets/js/waves.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+    <script src="{{ asset('assets/js/anticopas.js') }}"></script>
+
+</body>
+
+</html>
