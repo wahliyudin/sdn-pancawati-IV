@@ -27,6 +27,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    private $password;
+
     /**
      * Where to redirect users after registration.
      *
@@ -66,12 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $this->password = strtotime('now');
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'status_verifikasi' => 0,
             'status_kelulusan' => 0,
-            'password' => strtotime('now'),
+            'password' => $this->password,
             'no_peserta' => generateNoPeserta()
         ]);
     }

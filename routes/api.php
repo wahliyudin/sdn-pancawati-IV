@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/get-regency/{id_provinsi}', [BaseController::class, 'getRegency']);
+Route::get('/get-district/{id_kota}', [BaseController::class, 'getDistrict']);
+Route::get('/get-village/{id_kecamatan}', [BaseController::class, 'getVillage']);

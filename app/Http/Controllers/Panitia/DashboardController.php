@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Panitia;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard', [
+        return view('panitia.dashboard', [
             'breadcrumb' => [
                 'title' => 'Dashboard',
                 'path' => [

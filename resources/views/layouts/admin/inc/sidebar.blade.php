@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.dasboard') }}" class="nav-link active">
+                    <a href="{{ route('panitia.dashboard') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -33,8 +33,16 @@
                 </li>
                 <li class="nav-header">NAVIGATION</li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('panitia.transaksi-pembayaran') }}">
+                        <i class="nav-icon fas fa-money-bill-wave"></i>
+                        <p>
+                            Transaksi Pembayaran
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-database"></i>
                         <p>
                             Master Data
                             <i class="right fas fa-angle-left"></i>
@@ -42,9 +50,50 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
+                            <a href="{{ route('panitia.tipe-pembayaran.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Siswa</p>
+                                <p>Tipe Pembayaran</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <p>
+                            Calon Siswa
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('panitia.siswa.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Semua Data</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Pengaturan
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('panitia.pengaturan.form-pendaftaran') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Form Pendaftaran</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('panitia.pengaturan.form-login') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Form Login</p>
                             </a>
                         </li>
                     </ul>
@@ -52,7 +101,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>{{ __('Logout') }}</p>
                     </a>
 

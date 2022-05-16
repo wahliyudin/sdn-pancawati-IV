@@ -49,4 +49,47 @@ class User extends Authenticatable
     {
         if (!empty($value)) $this->attributes['password'] = bcrypt($value);
     }
+
+    public function identity()
+    {
+        return $this->hasOne(Identity::class);
+    }
+
+    public function userParent()
+    {
+        return $this->hasOne(UserParent::class);
+    }
+
+
+    public function getStatusVerifAttribute()
+    {
+        return $this->status_verifikasi == 1 ? 'Terverifikasi' : ($this->status_verifikasi == 2 ? 'Tidak Valid' : 'Belum diverifikasi');
+    }
+
+    public function getStatusPendaftaranAttribute()
+    {
+        if ($this->status_kelulusan ==  -1)
+            return 'Berkas Dikembalikan';
+        if ($this->status_kelulusan ==  1)
+            return 'Berkas Sedang Diperiksa Panitia';
+        elseif ($this->status_kelulusan == 2)
+            return 'Berkas Pendaftaran Terverifikasi';
+        elseif ($this->status_kelulusan == 3)
+            return 'Berkas Pendaftaran tidak valid';
+        elseif ($this->status_kelulusan == 4)
+            return 'Selamat! Kamu dinyatakan lulus pada tahapan seleksi berkas calon peserta didik baru di MAN 2 Model Medan. Silahkan cetak kartu ujian untuk melihat jadwal ujian';
+        elseif ($this->status_kelulusan == 5)
+            return 'Maaf! kamu dinyatakan tidak lulus pada tahapan seleksi berkas calon peserta didik baru di MAN 2 Model Medan';
+        return 'Berkas Belum dikirim';
+    }
+
+    public function getStatusLulusAttribute()
+    {
+        if ($this->status_kelulusan == 4)
+            return '<div class="btn btn-success">Lulus</div>';
+        elseif ($this->status_kelulusan == 5)
+            return '<div class="btn btn-danger">Tidak Lulus</div>';
+        else
+            return '<div class="btn btn-secondary">Belum ada Aksi</div>';
+    }
 }

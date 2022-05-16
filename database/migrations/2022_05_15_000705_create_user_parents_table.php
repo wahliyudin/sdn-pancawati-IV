@@ -16,21 +16,13 @@ class CreateUserParentsTable extends Migration
         Schema::create('user_parents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ayah');
-            $table->string('tempat_lahir_ayah');
-            $table->string('tanggal_lahir_ayah');
-            $table->string('pekerjaan_ayah');
-            $table->string('email_ayah')->nullable();
-            $table->string('no_hp_ayah')->nullable();
-            $table->string('nama_ibu');
-            $table->string('tempat_lahir_ibu');
-            $table->string('tanggal_lahir_ibu');
-            $table->string('pekerjaan_ibu');
-            $table->string('email_ibu')->nullable();
-            $table->string('no_hp_ibu')->nullable();
+            $table->unsignedBigInteger('father_id');
+            $table->unsignedBigInteger('mother_id');
             $table->string('alamat');
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('father_id')->references('id')->on('fathers')->cascadeOnDelete();
+            $table->foreign('mother_id')->references('id')->on('mothers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

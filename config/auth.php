@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'panitia' => [
+            'driver' => 'session',
+            'provider' => 'panitia',
+        ],
     ],
 
     /*
@@ -65,6 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'panitia' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Panitia::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
