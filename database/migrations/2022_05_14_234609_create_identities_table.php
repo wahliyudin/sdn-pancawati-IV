@@ -35,7 +35,7 @@ class CreateIdentitiesTable extends Migration
             $table->string('berat_badan');
             $table->string('tinggi_badan');
             $table->string('riwayat_penyakit')->nullable();
-            $table->string('pas_foto_url');
+            $table->string('pas_foto_url')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();

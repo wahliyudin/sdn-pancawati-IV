@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Arr;
 
 class RegisterController extends Controller
 {
@@ -70,8 +71,9 @@ class RegisterController extends Controller
     {
         $this->password = strtotime('now');
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name' => Arr::get($data, 'name'),
+            'email' => Arr::get($data, 'email'),
+            'nisn' => Arr::get($data, 'nisn'),
             'status_verifikasi' => 0,
             'status_kelulusan' => 0,
             'password' => $this->password,

@@ -1,20 +1,20 @@
-<div class="box box-info padding-1" style="width: 80vw;">
+<div class="box box-info padding-1">
     <div class="box-body">
         <input type="hidden" name="user_id" value="{{ $identitas->user_id }}">
         <div class="row">
             <div class="col-12 col-sm-6">
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input name="nama" type="text" class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}"
-                        id="nama" value="{{ old('nama', $identitas->nama ?? auth()->user()->name) }}"
-                        placeholder="Nama">
+                    <input disabled name="nama" type="text"
+                        class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}" id="nama"
+                        value="{{ old('nama', $identitas->nama ?? auth()->user()->name) }}" placeholder="Nama">
                     @error('nama')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <select class="form-control {{ $errors->has('jenis_kelamin') ? ' is-invalid' : '' }}"
+                    <select disabled class="form-control {{ $errors->has('jenis_kelamin') ? ' is-invalid' : '' }}"
                         name="jenis_kelamin">
                         <option {{ old('jenis_kelamin', $identitas->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}
                             value="Laki-laki">Laki-laki</option>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input type="text" name="tempat_lahir"
+                    <input disabled type="text" name="tempat_lahir"
                         class="form-control {{ $errors->has('tempat_lahir') ? ' is-invalid' : '' }}" id="tempat_lahir"
                         value="{{ old('tempat_lahir', $identitas->tempat_lahir) }}" placeholder="tempat lahir">
                     @error('tempat_lahir')
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label>Tanggal Lahir</label>
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" name="tanggal_lahir"
+                        <input disabled type="text" name="tanggal_lahir"
                             class="form-control datetimepicker-input {{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}"
                             data-target="#reservationdate"
                             value="{{ old('tanggal_lahir', $identitas->tanggal_lahir) }}">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nisn">NISN</label>
-                    <input type="number" name="nisn"
+                    <input disabled type="number" name="nisn"
                         class="form-control {{ $errors->has('nisn') ? ' is-invalid' : '' }}" id="nisn"
                         value="{{ old('nisn', $identitas->nisn) }}" placeholder="NISN">
                     @error('nisn')
@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nik">NIK</label>
-                    <input type="number" name="nik"
+                    <input disabled type="number" name="nik"
                         class="form-control {{ $errors->has('nik') ? ' is-invalid' : '' }}" id="nik"
                         value="{{ old('nik', $identitas->nik) }}" placeholder="NIK">
                     @error('nik')
@@ -72,7 +72,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="jumlah_saudara">Jumlah Saudara</label>
-                            <input type="number" name="jumlah_saudara"
+                            <input disabled type="number" name="jumlah_saudara"
                                 class="form-control {{ $errors->has('jumlah_saudara') ? ' is-invalid' : '' }}"
                                 id="jumlah_saudara" value="{{ old('jumlah_saudara', $identitas->jumlah_saudara) }}"
                                 placeholder="Jumlah Saudara">
@@ -85,7 +85,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="anak_ke">Anak Ke</label>
-                            <input type="number" name="anak_ke"
+                            <input disabled type="number" name="anak_ke"
                                 class="form-control {{ $errors->has('anak_ke') ? ' is-invalid' : '' }}" id="anak_ke"
                                 value="{{ old('anak_ke', $identitas->anak_ke) }}" placeholder="Anak Ke">
                             @error('anak_ke')
@@ -97,7 +97,7 @@
 
                 <div class="form-group">
                     <label for="agama">Agama</label>
-                    <input type="text" name="agama"
+                    <input disabled type="text" name="agama"
                         class="form-control {{ $errors->has('agama') ? ' is-invalid' : '' }}" id="agama"
                         value="{{ old('agama', $identitas->agama) }}" placeholder="Agama">
                     @error('agama')
@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-group">
                     <label for="suku">Suku</label>
-                    <input type="text" name="suku"
+                    <input disabled type="text" name="suku"
                         class="form-control {{ $errors->has('suku') ? ' is-invalid' : '' }}" id="suku"
                         value="{{ old('suku', $identitas->suku) }}" placeholder="Suku">
                     @error('suku')
@@ -115,7 +115,7 @@
                 </div>
                 <div class="form-group">
                     <label for="kewarganegaraan">Kewarganegaraan</label>
-                    <input type="text" name="kewarganegaraan"
+                    <input disabled type="text" name="kewarganegaraan"
                         class="form-control {{ $errors->has('kewarganegaraan') ? ' is-invalid' : '' }}"
                         id="kewarganegaraan" value="{{ old('kewarganegaraan', $identitas->kewarganegaraan) }}"
                         placeholder="Kewarganegaraan">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="form-group">
                     <label for="bahasa">Bahasa</label>
-                    <input type="text" name="bahasa"
+                    <input disabled type="text" name="bahasa"
                         class="form-control {{ $errors->has('bahasa') ? ' is-invalid' : '' }}" id="bahasa"
                         value="{{ old('bahasa', $identitas->bahasa) }}" placeholder="Bahasa">
                     @error('bahasa')
@@ -134,7 +134,7 @@
                 </div>
                 <div class="form-group">
                     <label for="asal_sekolah">Asal Sekolah</label>
-                    <input type="text" name="asal_sekolah"
+                    <input disabled type="text" name="asal_sekolah"
                         class="form-control {{ $errors->has('asal_sekolah') ? ' is-invalid' : '' }}"
                         id="asal_sekolah" value="{{ old('asal_sekolah', $identitas->asal_sekolah) }}"
                         placeholder="Asal Sekolah">
@@ -147,7 +147,7 @@
 
                 <div class="form-group">
                     <label for="no_ijazah">No Ijazah</label>
-                    <input type="number" name="no_ijazah"
+                    <input disabled type="number" name="no_ijazah"
                         class="form-control {{ $errors->has('no_ijazah') ? ' is-invalid' : '' }}" id="no_ijazah"
                         value="{{ old('no_ijazah', $identitas->no_ijazah) }}" placeholder="No Ijazah">
                     @error('no_ijazah')
@@ -157,7 +157,7 @@
                 <div class="form-group">
                     <label>Tanggal Ijazah</label>
                     <div class="input-group date" id="tanggal_ijazah" data-target-input="nearest">
-                        <input type="text" name="tanggal_ijazah"
+                        <input disabled type="text" name="tanggal_ijazah"
                             class="form-control datetimepicker-input {{ $errors->has('tanggal_ijazah') ? ' is-invalid' : '' }}"
                             data-target="#tanggal_ijazah"
                             value="{{ old('tanggal_ijazah', $identitas->tanggal_ijazah) }}">
@@ -171,7 +171,7 @@
                 </div>
                 <div class="form-group">
                     <label for="gol_darah">Golongan Darah</label>
-                    <input type="text" name="gol_darah"
+                    <input disabled type="text" name="gol_darah"
                         class="form-control {{ $errors->has('gol_darah') ? ' is-invalid' : '' }}" id="gol_darah"
                         value="{{ old('gol_darah', $identitas->gol_darah) }}" placeholder="Golongan Darah">
                     @error('gol_darah')
@@ -180,7 +180,7 @@
                 </div>
                 <div class="form-group">
                     <label for="berat_badan">Berat Badan</label>
-                    <input type="number" name="berat_badan"
+                    <input disabled type="number" name="berat_badan"
                         class="form-control {{ $errors->has('berat_badan') ? ' is-invalid' : '' }}" id="berat_badan"
                         value="{{ old('berat_badan', $identitas->berat_badan) }}" placeholder="Berat Badan">
                     @error('berat_badan')
@@ -189,7 +189,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tinggi_badan">Tinggi Badan</label>
-                    <input type="number" name="tinggi_badan"
+                    <input disabled type="number" name="tinggi_badan"
                         class="form-control {{ $errors->has('tinggi_badan') ? ' is-invalid' : '' }}"
                         id="tinggi_badan" value="{{ old('tinggi_badan', $identitas->tinggi_badan) }}"
                         placeholder="Tinggi Badan">
@@ -199,7 +199,7 @@
                 </div>
                 <div class="form-group">
                     <label for="riwayat_penyakit">Riwayat Penyakit</label>
-                    <input type="text" name="riwayat_penyakit"
+                    <input disabled type="text" name="riwayat_penyakit"
                         class="form-control {{ $errors->has('riwayat_penyakit') ? ' is-invalid' : '' }}"
                         id="riwayat_penyakit" value="{{ old('riwayat_penyakit', $identitas->riwayat_penyakit) }}"
                         placeholder="Riwayat Penyakit">
@@ -213,21 +213,8 @@
                         <br><img src="{{ Storage::url($identitas->pas_foto_url) }}" alt="" width="200px"><br>
                         <p></p>
                     @endif
-                    <div class="custom-file">
-                        <input name="pas_foto_url" type="file"
-                            class="custom-file-input {{ $errors->has('pas_foto_url') ? ' is-invalid' : '' }}"
-                            id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
-                    </div>
-                    @error('pas_foto_url')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
                 </div>
             </div>
         </div>
-    </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-success" onclick="loadTabActive('#data-orang-tua')">Next</button>
     </div>
 </div>

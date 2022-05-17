@@ -7,7 +7,7 @@
         <div class="wrapper-cards">
             <div class="card">
                 <span class="card-title">Total Jumlah Pendaftar</span>
-                <span class="card-count">1</span>
+                <span class="card-count">{{ App\Models\User::count() }}</span>
                 <i class='bx bx-user-circle'></i>
             </div>
         </div>

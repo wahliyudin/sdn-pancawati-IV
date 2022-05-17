@@ -10,7 +10,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo_me.png') }}">
     <!-- App title -->
-    <title>PPDB MAN 2 Model Medan - Login</title>
+    <title>SD PUPUK KUJANG CIKAMPEK - Login</title>
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />

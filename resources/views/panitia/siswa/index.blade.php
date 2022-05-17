@@ -26,7 +26,7 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{!! $user->status_lulus !!}</td>
-                                        <td>{{ $user->status_verif }}</td>
+                                        <td>{!! $user->status_verif !!}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a class="btn btn-sm btn-primary"

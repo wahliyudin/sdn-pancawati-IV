@@ -38,14 +38,13 @@ class Identity extends Model
         return [
             'user_id' => 'required',
             'nama' => 'required',
-            'nisn' => 'required',
-            'nik' => 'required',
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'agama' => 'required',
-            'anak_ke' => 'required',
+            'nisn' => 'required',
             'jumlah_saudara' => 'required',
+            'anak_ke' => 'required',
+            'agama' => 'required',
             'suku' => 'required',
             'kewarganegaraan' => 'required',
             'bahasa' => 'required',
@@ -56,12 +55,8 @@ class Identity extends Model
             'berat_badan' => 'required',
             'tinggi_badan' => 'required',
             'riwayat_penyakit' => 'required',
+            'nik' => 'required',
             'pas_foto_url' => ['required', 'file', 'max:300', 'mimes:jpg,jpeg'],
-            'provinsi' => 'required',
-            'kabupaten' => 'required',
-            'kecamatan' => 'required',
-            'desa_kel' => 'required',
-            'kode_pos' => 'required',
         ];
     }
 }

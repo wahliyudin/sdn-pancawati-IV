@@ -25,8 +25,10 @@ Route::middleware(['auth:panitia'])->prefix('panitia')->name('panitia.')->group(
 
     Route::resource('siswa', SiswaController::class);
 
-    Route::get('siswa-verified/{id}', [SiswaController::class, 'verified'])->name('siswa.verified');
-    Route::get('siswa-resend-verified/{id}', [SiswaController::class, 'verified'])->name('siswa.resend-verified');
+    Route::get('siswa/verified/{id}', [SiswaController::class, 'verified'])->name('siswa.verified');
+    Route::get('siswa/resend-verified/{id}', [SiswaController::class, 'verified'])->name('siswa.resend-verified');
+    Route::get('siswa/resend-verified/{id}', [SiswaController::class, 'verified'])->name('siswa.resend-verified');
+    Route::get('siswa/verif-berkas/{id}/{status}', [SiswaController::class, 'verifBerkas'])->name('siswa.verif-berkas');
 
     Route::get('pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 
@@ -51,4 +53,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
     Route::post('pendaftaran/identitas-diri/store', [PendaftaranController::class, 'storeIdentitasDiri'])->name('pendaftaran.identitas-diri.store');
+    Route::post('pendaftaran/data-orang-tua/store', [PendaftaranController::class, 'storeDataOrangTua'])->name('pendaftaran.data-orang-tua.store');
+    Route::post('pendaftaran/kirim', [PendaftaranController::class, 'kirim'])->name('pendaftaran.kirim');
 });

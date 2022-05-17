@@ -10,7 +10,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo_me.png') }}">
     <!-- App title -->
-    <title>PPDB MAN 2 Model Medan - Registrasi</title>
+    <title>SD PUPUK KUJANG CIKAMPEK - Registrasi</title>
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -60,8 +60,21 @@
                                         @csrf
                                         <div class="form-group row">
                                             <div class="col-12">
+                                                <input class="form-control @error('nisn') is-invalid @enderror"
+                                                    name="nisn" type="number" required="" placeholder="NISN"
+                                                    value="{{ old('nisn') }}">
+
+                                                @error('nisn')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12">
                                                 <input class="form-control @error('name') is-invalid @enderror"
-                                                    name="name" type="text" required="" placeholder="name"
+                                                    name="name" type="text" required="" placeholder="Name"
                                                     value="{{ old('name') }}">
 
                                                 @error('name')

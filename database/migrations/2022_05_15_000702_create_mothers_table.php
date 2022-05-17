@@ -18,7 +18,7 @@ class CreateMothersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('nama');
             $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
+            $table->string('tanggal_lahir');
             $table->string('pekerjaan');
             $table->string('email')->nullable();
             $table->string('no_hp', 13)->nullable();

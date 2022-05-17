@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Panitia;
 
 use App\Http\Controllers\Controller;
+use App\Models\Identity;
 use App\Models\User;
+use App\Models\UserParent;
 use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -63,6 +65,12 @@ class SiswaController extends Controller
     {
         try {
             $decrypted = Crypt::decrypt($id);
+            $user = User::findOrFail($decrypted);
+            $identitas = $user->identity ?? new Identity();
+            $identitas->user_id = $user->id;
+
+            $orang_tua = $user->userParent ?? new UserParent();
+            $orang_tua->user_id = $user->id;
             return view('panitia.siswa.show', [
                 'breadcrumb' => [
                     'title' => 'Detail Siswa',
@@ -71,7 +79,9 @@ class SiswaController extends Controller
                         'Detail Siswa' => 0
                     ]
                 ],
-                'user' => User::findOrFail($decrypted)
+                'user' => $user,
+                'identitas' => $identitas,
+                'orang_tua' => $orang_tua
             ]);
         } catch (Exception $th) {
         }
@@ -130,6 +140,26 @@ class SiswaController extends Controller
             return redirect()->route('panitia.siswa.show', Crypt::encrypt($user->id))
                 ->with('success', 'Calon siswa berhasil diverifikasi.');
         } catch (DecryptException $th) {
+        }
+    }
+
+    public function verifBerkas($id, $status)
+    {
+        try {
+            $decrypted = Crypt::decrypt($id);
+            $user = User::findOrFail($decrypted);
+            $user->update([
+                'status_kelulusan' => $status,
+                'catatan_kelulusan' => isset($_GET['catatan_kelulusan']) ? $_GET['catatan_kelulusan'] : '',
+            ]);
+
+            // send email notif here
+            // $user->notify(new FileVerified($user));
+
+            return redirect()->route('panitia.siswa.show', Crypt::encrypt($user->id))
+                ->with('success', 'Calon siswa berhasil diverifikasi.');
+        } catch (DecryptException $th) {
+
         }
     }
 }

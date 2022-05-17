@@ -63,7 +63,9 @@ class User extends Authenticatable
 
     public function getStatusVerifAttribute()
     {
-        return $this->status_verifikasi == 1 ? 'Terverifikasi' : ($this->status_verifikasi == 2 ? 'Tidak Valid' : 'Belum diverifikasi');
+        return $this->status_verifikasi == 1 ? '<span style="color: green;">Terverifikasi</span>' : '<span
+            style="color: red;">Belum
+        diverifikasi</span>';
     }
 
     public function getStatusPendaftaranAttribute()
@@ -77,9 +79,10 @@ class User extends Authenticatable
         elseif ($this->status_kelulusan == 3)
             return 'Berkas Pendaftaran tidak valid';
         elseif ($this->status_kelulusan == 4)
-            return 'Selamat! Kamu dinyatakan lulus pada tahapan seleksi berkas calon peserta didik baru di MAN 2 Model Medan. Silahkan cetak kartu ujian untuk melihat jadwal ujian';
+            return 'Selamat! Kamu dinyatakan lulus pada tahapan seleksi berkas calon peserta didik baru di SD PUPUK KUJANG CIKAMPEK.';
         elseif ($this->status_kelulusan == 5)
-            return 'Maaf! kamu dinyatakan tidak lulus pada tahapan seleksi berkas calon peserta didik baru di MAN 2 Model Medan';
+            return 'Maaf! kamu dinyatakan tidak lulus pada tahapan seleksi berkas calon peserta didik baru SD PUPUK
+            KUJANG CIKAMPEK';
         return 'Berkas Belum dikirim';
     }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SD PUPUK KUJANG CIKAMPEK</title>
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     @include('layouts.user.inc.head')
@@ -14,8 +14,18 @@
 <body>
     <div class="app">
         <div class="wrapper-head">
-            <header>
-                <h1 class="head-title">MAN 3 KARAWANG</h1>
+            <header class="d-flex align-items-center justify-content-between" style="width: 100%;">
+                <h1 class="head-title">SD PUPUK KUJANG CIKAMPEK</h1>
+                @auth
+                    <a style="color: white;" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @endauth
             </header>
             <ul>
                 <li>
