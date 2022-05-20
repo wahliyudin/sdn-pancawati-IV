@@ -14,7 +14,8 @@ class ItemPayment extends Model
         'panitia_id',
         'payment_number',
         'billing',
-        'description'
+        'description',
+        'tanggal'
     ];
 
     public function payment()

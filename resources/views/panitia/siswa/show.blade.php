@@ -143,7 +143,7 @@
                         <table class="table table-bordered">
                             <tr>
                                 <td><b>Nama</b></td>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->identity->nama }}</td>
                             </tr>
                             <tr>
                                 <td><b>E-Mail</b></td>

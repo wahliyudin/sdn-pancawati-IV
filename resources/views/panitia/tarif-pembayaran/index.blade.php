@@ -6,44 +6,38 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Siswa</h3>
+                        <h3 class="card-title">Tarif Pembayaran</h3>
+                        <a href="" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus mr-2"></i>
+                            Tambah
+                            Data</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="siswa" class="table table-bordered table-striped">
+                        <table id="tarif-pembayaran" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Calon Siswa</th>
-                                    <th>Email</th>
-                                    <th>Status Kelulusan</th>
-                                    <th>Status Akun</th>
+                                    <th>Tipe Pembayaran</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($type_of_payments as $type_of_payment)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{!! $user->status_lulus !!}</td>
-                                        <td>{!! $user->status_verif !!}</td>
+                                        <td>{{ $type_of_payment->name }}</td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <a class="btn btn-sm btn-primary"
-                                                    href="{{ route('panitia.siswa.show', Crypt::encrypt($user->id)) }}"><i
-                                                        class="fa fa-fw fa-eye"></i> Lihat</a>
-                                                <form
-                                                    action="{{ route('panitia.siswa.destroy', Crypt::encrypt($user->id)) }}"
+                                            <div class="d-flex align-item-center">
+                                                <a class="btn btn-sm btn-primary mr-2"
+                                                    href="{{ route('panitia.tarif-pembayaran.by-tipe', Crypt::encrypt($type_of_payment->id)) }}"><i
+                                                        class="fas fa-eye mr-1"></i> Tarif Pembayaran</a>
+                                                {{-- <form
+                                                    action="{{ route('panitia.tarif-pembayaran.destroy', Crypt::encrypt($type_of_payment->id)) }}"
                                                     method="POST"
                                                     onsubmit="if(confirm('{{ __('Are you sure to delete this item ?') }}')){ return true }else{ return false }">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm ml-2"><i
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
                                                             class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                                {{-- <button class="btn btn-sm btn-green ml-2"><i
-                                                        class="fas fa-user-check mr-1"></i>
-                                                    verified</button> --}}
+                                                </form> --}}
                                             </div>
                                         </td>
                                     </tr>
@@ -77,12 +71,12 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script>
         $(function() {
-            $("#siswa").DataTable({
+            $("#tarif-pembayaran").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#siswa_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#tarif-pembayaran_wrapper .col-md-6:eq(0)');
         });
     </script>
 @endpush

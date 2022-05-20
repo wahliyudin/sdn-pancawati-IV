@@ -7,6 +7,7 @@ use App\Http\Controllers\Panitia\PembayaranController;
 use App\Http\Controllers\Panitia\PendaftaranController;
 use App\Http\Controllers\Panitia\PengaturanController;
 use App\Http\Controllers\Panitia\SiswaController;
+use App\Http\Controllers\Panitia\TarifPembayaranController;
 use App\Http\Controllers\Panitia\TipePembayaranController;
 use App\Http\Controllers\Panitia\TransaksiPembayaran;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,12 @@ Route::middleware(['auth:panitia'])->prefix('panitia')->name('panitia.')->group(
     Route::delete('tipe-pembayaran/{id}/destroy', [TipePembayaranController::class, 'destroy'])->name('tipe-pembayaran.destroy');
 
     Route::get('transaksi-pembayaran', [TransaksiPembayaran::class, 'index'])->name('transaksi-pembayaran');
+    Route::post('payment', [TransaksiPembayaran::class, 'payment'])->name('payment');
+
+    Route::get('tarif-pembayaran', [TarifPembayaranController::class, 'index'])->name('tarif-pembayaran.index');
+    Route::get('tarif-pembayaran/tipe-pembayaran/{id}', [TarifPembayaranController::class, 'byTipe'])->name('tarif-pembayaran.by-tipe');
+    Route::post('tarif-pembayaran/tipe-pembayaran/{id}/sama', [TarifPembayaranController::class, 'billingSame'])->name('tarif-pembayaran.by-tipe.sama');
+    Route::post('tarif-pembayaran/tipe-pembayaran/{id}/per-siswa', [TarifPembayaranController::class, 'billingPerStudent'])->name('tarif-pembayaran.by-tipe.per-siswa');
 });
 
 

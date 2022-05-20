@@ -42,8 +42,8 @@
                             <div class="text-center account-logo-box">
                                 <div class="m-t-10 m-b-10">
                                     <a href="{{ route('home') }}" class="text-success">
-                                        <span><img src="{{ asset('assets/images/logo_me.png') }}" alt=""
-                                                height="36"></span>
+                                        {{-- <span><img src="{{ asset('assets/images/logo_me.png') }}" alt=""
+                                                height="36"></span> --}}
                                         <h2 style="color:#FFF">LOGIN</h2>
                                     </a>
                                 </div>

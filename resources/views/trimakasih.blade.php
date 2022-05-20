@@ -42,9 +42,9 @@
                             <div class="text-center account-logo-box">
                                 <div class="m-t-10 m-b-10">
                                     <a href="{{ route('home') }}" class="text-success">
-                                        <span><img src="{{ asset('assets/images/logo_me.png') }}" alt=""
-                                                height="36"></span>
-                                        <h2 style="color:#FFF">@yield('title', config('app.name', 'Laravel'))</h2>
+                                        {{-- <span><img src="{{ asset('assets/images/logo_me.png') }}" alt=""
+                                                height="36"></span> --}}
+                                        <h2 style="color:#FFF">PPDB</h2>
                                     </a>
                                 </div>
                                 <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->

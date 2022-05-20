@@ -20,6 +20,7 @@ class CreateItemPaymentsTable extends Migration
             $table->string('payment_number');
             $table->bigInteger('billing');
             $table->string('description');
+            $table->date('tanggal');
 
             $table->foreign('payment_id')->references('id')->on('payments')->cascadeOnDelete();
             $table->foreign('panitia_id')->references('id')->on('panitia')->cascadeOnDelete();
