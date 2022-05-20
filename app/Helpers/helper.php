@@ -22,7 +22,7 @@ if (!function_exists("generateNoPeserta")) {
 }
 
 if (!function_exists('replaceRupiah')) {
-    function replaceRupiah(string $rupiah): int
+    function replaceRupiah(string $rupiah)
     {
         $rupiah = Str::replace('Rp. ', '', $rupiah);
         return (int) Str::replace('.', '', $rupiah);

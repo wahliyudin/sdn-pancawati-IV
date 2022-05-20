@@ -19,6 +19,7 @@ class CreatePaymentsTable extends Migration
             $table->unsignedBigInteger('type_of_payment_id');
             $table->bigInteger('billing');
             $table->bigInteger('total_payment')->default(0);
+            $table->boolean('status')->default(false);
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('type_of_payment_id')->references('id')->on('type_of_payments')->cascadeOnDelete();

@@ -41,6 +41,7 @@ Route::middleware(['auth:panitia'])->prefix('panitia')->name('panitia.')->group(
     Route::delete('tipe-pembayaran/{id}/destroy', [TipePembayaranController::class, 'destroy'])->name('tipe-pembayaran.destroy');
 
     Route::get('transaksi-pembayaran', [TransaksiPembayaran::class, 'index'])->name('transaksi-pembayaran');
+    Route::get('transaksi-pembayaran/create', [TransaksiPembayaran::class, 'create'])->name('transaksi-pembayaran.create');
     Route::post('payment', [TransaksiPembayaran::class, 'payment'])->name('payment');
 
     Route::get('tarif-pembayaran', [TarifPembayaranController::class, 'index'])->name('tarif-pembayaran.index');

@@ -28,10 +28,6 @@ class BaseController extends Controller
 
     public function siswa($id_tipe, $id)
     {
-        // return response()->json([
-        //     'id_tipe' => $id_tipe,
-        //     'id' => $id
-        // ]);
         return response()->json(User::with('payments')->findOrFail($id)->payments->where('type_of_payment_id', $id_tipe)->first());
     }
 }

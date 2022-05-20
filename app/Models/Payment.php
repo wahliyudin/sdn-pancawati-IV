@@ -9,11 +9,15 @@ class Payment extends Model
 {
     use HasFactory;
 
+    const STATUS_LUNAS = true;
+    const STATUS_BELUM_LUNAS = false;
+
     protected $fillable = [
         'user_id',
         'type_of_payment_id',
         'billing',
-        'total_payment'
+        'total_payment',
+        'status'
     ];
 
     public function user()
