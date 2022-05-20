@@ -97,4 +97,9 @@ class User extends Authenticatable
         else
             return '<div class="btn btn-secondary">Belum ada Aksi</div>';
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

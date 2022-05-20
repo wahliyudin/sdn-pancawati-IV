@@ -39,3 +39,4 @@
         })
     </script>
 @endpush
+@include('layouts.inc.tosatr')

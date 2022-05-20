@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-database"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Master Data
                             <i class="right fas fa-angle-left"></i>
@@ -61,6 +61,12 @@
                             <a href="{{ route('panitia.tipe-pembayaran.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tipe Pembayaran</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pengguna Aplikasi</p>
                             </a>
                         </li>
                     </ul>
@@ -105,6 +111,14 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="nav-icon fas fa-database"></i>
+                        <p>
+                            Backup Database
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

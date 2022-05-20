@@ -12,7 +12,8 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Siswa</label>
-                                        <select name="student_id" class="form-control select2" style="width: 100%;">
+                                        <select name="student_id" class="student_id form-control select2"
+                                            style="width: 100%;">
                                             <option selected="selected" disabled>-- pilih --</option>
                                             @foreach ($students as $student)
                                                 <option value="{{ $student->id }}">{{ $student->identity->nama }}
@@ -24,7 +25,8 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Jenis Pembayaran</label>
-                                        <select name="type_of_payment_id" class="form-control select2" style="width: 100%;">
+                                        <select name="type_of_payment_id" class="tipe-pembayaran form-control select2"
+                                            style="width: 100%;">
                                             <option selected="selected" disabled>-- pilih --</option>
                                             @foreach ($type_of_payments as $type_of_payment)
                                                 <option value="{{ $type_of_payment->id }}">{{ $type_of_payment->name }}
@@ -64,8 +66,8 @@
                                 <div class="col-md-6 row">
                                     <div class="form-group col-md-6">
                                         <label>Jumlah Tagihan</label>
-                                        <input type="text" name="billing" readonly class="form-control" id="rupiah1"
-                                            value="Rp. 100.000">
+                                        <input type="text" name="billing" readonly class="billing form-control"
+                                            id="rupiah1">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Jumlah Pembayaran</label>
@@ -86,9 +88,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="payment" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Keterangan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- @foreach ($type_of_payments as $type_of_payment)
+                                    <tr>
+                                        <td>{{ $type_of_payment->name }}</td>
+                                        <td>{{ $type_of_payment->description }}</td>
+                                        <td>
+                                            <div class="d-flex align-item-center">
+                                                <a class="btn btn-sm btn-primary mr-2"
+                                                    href="{{ route('panitia.payment.edit', Crypt::encrypt($type_of_payment->id)) }}"><i
+                                                        class="fas fa-edit mr-1"></i> Edit</a>
+                                                <form
+                                                    action="{{ route('panitia.payment.destroy', Crypt::encrypt($type_of_payment->id)) }}"
+                                                    method="POST"
+                                                    onsubmit="if(confirm('{{ __('Are you sure to delete this item ?') }}')){ return true }else{ return false }">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach --}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+@include('layouts.inc.tosatr')
 @push('css')
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
@@ -125,6 +170,37 @@
             format: 'L'
         });
         $('[data-mask]').inputmask()
+
+        $('.student_id').change(function(e) {
+            e.preventDefault();
+            const id = e.target.value;
+            const id_tipe = $('.tipe-pembayaran').val();
+            if (id_tipe && id) {
+                $.ajax({
+                    url: 'http://ppdb-angel.loc/api/tipe-pembayaran/' + id_tipe + '/siswa/' + id,
+                    type: 'get',
+                    success: function(response) {
+                        $('.billing').val(formatRupiah(String(response.billing), 'Rp. '));
+                        // console.log(String(response.billing));
+                    }
+                });
+            }
+        });
+        $('.tipe-pembayaran').change(function(e) {
+            e.preventDefault();
+            const id_tipe = e.target.value;
+            const id = $('.student_id').val();
+            if (id_tipe && id) {
+                $.ajax({
+                    url: 'http://ppdb-angel.loc/api/tipe-pembayaran/' + id_tipe + '/siswa/' + id,
+                    type: 'get',
+                    success: function(response) {
+                        $('.billing').val(formatRupiah(String(response.billing), 'Rp. '));
+                        // console.log(String(response.billing));
+                    }
+                });
+            }
+        });
     </script>
     <script type="text/javascript">
         var rupiah1 = document.getElementById('rupiah1');
@@ -156,5 +232,33 @@
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
         }
+    </script>
+@endpush
+@push('css')
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+@endpush
+@push('script')
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#payment").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+            }).buttons().container().appendTo('#payment_wrapper .col-md-6:eq(0)');
+        });
     </script>
 @endpush

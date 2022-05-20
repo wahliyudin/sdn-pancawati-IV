@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/get-regency/{id_provinsi}', [BaseController::class, 'getRegency']);
 Route::get('/get-district/{id_kota}', [BaseController::class, 'getDistrict']);
 Route::get('/get-village/{id_kecamatan}', [BaseController::class, 'getVillage']);
+Route::get('tipe-pembayaran/{id_tipe}/siswa/{id}', [BaseController::class, 'siswa'])->name('api.siswa');

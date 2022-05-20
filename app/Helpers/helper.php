@@ -44,7 +44,7 @@ if (!function_exists('generatePaymentNumber')) {
             if ($model::count() === 0) {
                 return $prefix . $thnBulan . '10000001';
             } else {
-                return $prefix . $thnBulan . (int) substr($model::last()->$property, -8) + 1;
+                return $prefix . $thnBulan . (int) substr($model::get()->last()->$property, -8) + 1;
             }
         }
         return null;

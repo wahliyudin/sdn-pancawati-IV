@@ -235,6 +235,7 @@
         </div>
     </div>
 @endsection
+@include('layouts.inc.tosatr')
 @push('css')
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ref\Region;
+use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class BaseController extends Controller
 {
@@ -21,5 +24,14 @@ class BaseController extends Controller
     function getVillage($id_kecamatan)
     {
         return Region::get_village($id_kecamatan);
+    }
+
+    public function siswa($id_tipe, $id)
+    {
+        // return response()->json([
+        //     'id_tipe' => $id_tipe,
+        //     'id' => $id
+        // ]);
+        return response()->json(User::with('payments')->findOrFail($id)->payments->where('type_of_payment_id', $id_tipe)->first());
     }
 }

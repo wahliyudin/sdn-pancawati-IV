@@ -38,6 +38,19 @@ class TransaksiPembayaran extends Controller
         $data['billing'] = replaceRupiah($data['billing']);
         $data['payment'] = replaceRupiah($data['payment']);
         $data['tanggal'] = Carbon::parse($data['tanggal'])->format('Y-m-d');
-        dd($data);
+        $payment = User::findOrFail($data['student_id'])->payments->where('type_of_payment_id',
+        $data['type_of_payment_id'])->first();
+        $payment->update([
+            'total_payment' => $payment->total_payment + $data['payment']
+        ]);
+        ItemPayment::create([
+            'payment_id' => $payment->id,
+            'panitia_id' => auth()->user()->id,
+            'payment_number' => generatePaymentNumber(new ItemPayment(), 'PN', 'payment_number'),
+            'billing' => $data['payment'],
+            'description' => $data['description'],
+            'tanggal' => $data['tanggal']
+        ]);
+        return back()->with('success', 'Data berhasil disimpan');
     }
 }
