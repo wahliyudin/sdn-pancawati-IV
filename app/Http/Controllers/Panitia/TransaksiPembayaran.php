@@ -26,6 +26,21 @@ class TransaksiPembayaran extends Controller
         ]);
     }
 
+    // public function edit()
+    // {
+
+    // }
+
+    // public function update()
+    // {
+    //     # code...
+    // }
+
+    // public function destroy()
+    // {
+    //     # code...
+    // }
+
     public function create()
     {
         return view('panitia.transaksi-pembayaran.create', [

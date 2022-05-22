@@ -56,6 +56,8 @@ Route::middleware(['auth.panitia:panitia'])->prefix('panitia')->name('panitia.')
     Route::get('exports/bukti-pembayaran/{student_id}/{type_of_payment_id}/{name_type_of_payment}',
     [HomeController::class,
     'exportBuktiPembayaran'])->name('exports.bukti-pembayaran');
+
+    Route::get('download-zip', [HomeController::class, 'downloadZip'])->name('backup');
 });
 
 Route::get('panitia-login', [PanitiaLoginController::class, 'showLoginForm'])->name('panitia-login-form');

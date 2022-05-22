@@ -63,12 +63,12 @@
                                 <p>Tipe Pembayaran</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengguna Aplikasi</p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -113,7 +113,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('panitia.backup') }}">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
                             Backup Database

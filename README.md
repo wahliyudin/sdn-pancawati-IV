@@ -1,4 +1,6 @@
 [x] Detail Pembayaran
-[] Cetak Bukti Pembayaran (per transaksi, all)
-[] Backup Database
+[x] Cetak Bukti Pembayaran (per transaksi, all)
+[] hapus per transaksi
+[] edit per transaksi
+[x] Backup Database
 [] Statistik Dashboard

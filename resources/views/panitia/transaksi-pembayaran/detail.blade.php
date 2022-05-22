@@ -41,9 +41,12 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex align-item-center">
-                                                    <button class="btn btn-sm btn-danger mr-2">
+                                                    {{-- <button class="btn btn-sm btn-danger mr-2">
                                                         <i class="fas fa-trash-alt mr-1"></i>
                                                         Hapus</button>
+                                                    <button class="btn btn-sm btn-primary mr-2">
+                                                        <i class="fas fa-edit mr-1"></i>
+                                                        Edit</button> --}}
                                                     <a href="{{ route('panitia.exports.bukti-pembayaran.pertransaksi', [
                                                         'student_id' => Crypt::encrypt($student->id),
                                                         'item_payment_id' => Crypt::encrypt($item_payment->id),
