@@ -63,5 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        'decrypt' => \App\Http\Middleware\RequestDecryptMiddleware::class,
+        'auth.panitia' => \App\Http\Middleware\PanitiaAuthenticate::class,
     ];
 }

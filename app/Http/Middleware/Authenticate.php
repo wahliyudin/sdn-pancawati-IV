@@ -16,11 +16,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            if (Auth::guard('panitia')->check()) {
-                return route('panitia.dashboard');
-            } else {
-                return route('login');
-            }
+            return route('login');
         }
     }
 }

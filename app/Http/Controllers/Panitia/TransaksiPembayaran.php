@@ -7,7 +7,9 @@ use App\Models\ItemPayment;
 use App\Models\TypeOfPayment;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class TransaksiPembayaran extends Controller
 {
@@ -76,5 +78,26 @@ class TransaksiPembayaran extends Controller
             'tanggal' => $data['tanggal']
         ]);
         return back()->with('success', 'Data berhasil disimpan');
+    }
+
+    public function detail($id)
+    {
+        try {
+            $decrypted = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+        $student = User::with('payments')->findOrFail($decrypted);
+        return view('panitia.transaksi-pembayaran.detail', [
+            'breadcrumb' => [
+                'title' => 'Detail Pembayaran',
+                'path' => [
+                    'Transaksi Pembayaran' => route('panitia.transaksi-pembayaran'),
+                    'Detail Pembayaran' => 0
+                ]
+            ],
+            'payments' => $student->payments,
+            'student' => $student
+        ]);
     }
 }

@@ -30,7 +30,7 @@ if (!function_exists('replaceRupiah')) {
 }
 
 if (!function_exists('numberFormat')) {
-    function numberFormat($number)
+    function numberFormat(int $number)
     {
         return number_format($number, 0, ',', '.');
     }

@@ -33,9 +33,12 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-item-center">
-                                                <button data-toggle="modal" data-target="#modal-detail{{ $student->id }}"
+                                                <a href="{{ route('panitia.transaksi-pembayaran.detail', Crypt::encrypt($student->id)) }}"
                                                     class="btn btn-sm btn-primary mr-2"><i class="fas fa-eye mr-1"></i>
-                                                    Detail</button>
+                                                    Detail</a>
+                                                <a href="{{ route('panitia.transaksi-pembayaran.detail', Crypt::encrypt($student->id)) }}"
+                                                    class="btn btn-sm btn-success mr-2"><i class="fas fa-print mr-1"></i>
+                                                    Cetak</a>
                                             </div>
                                         </td>
                                     </tr>

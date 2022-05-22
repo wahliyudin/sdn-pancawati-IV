@@ -61,7 +61,7 @@ class PanitiaLoginController extends Controller
         if (Auth::guard('panitia')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('panitia.dashboard');
         }
-        return redirect('/panitia-login')->with('error', 'Invalid Email address or Password');
+        return redirect('/panitia-login-form')->with('error', 'Invalid Email address or Password');
     }
 
     /* GET
@@ -70,6 +70,6 @@ class PanitiaLoginController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect('/panitia-login');
+        return redirect('/panitia-login-form');
     }
 }
