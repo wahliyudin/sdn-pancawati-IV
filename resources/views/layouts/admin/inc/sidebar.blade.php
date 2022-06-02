@@ -63,6 +63,12 @@
                                 <p>Tipe Pembayaran</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('panitia.account.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Rekening</p>
+                            </a>
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

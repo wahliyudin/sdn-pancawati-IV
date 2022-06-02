@@ -4,6 +4,7 @@ use App\Http\Controllers\Panitia\DashboardController;
 use App\Http\Controllers\Auth\PanitiaLoginController;
 use App\Http\Controllers\EncryptController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Panitia\AccountController;
 use App\Http\Controllers\Panitia\PembayaranController;
 use App\Http\Controllers\Panitia\PendaftaranController;
 use App\Http\Controllers\Panitia\PengaturanController;
@@ -40,6 +41,13 @@ Route::middleware(['auth.panitia:panitia'])->prefix('panitia')->name('panitia.')
     Route::get('tipe-pembayaran/{id}/edit', [TipePembayaranController::class, 'edit'])->name('tipe-pembayaran.edit');
     Route::put('tipe-pembayaran/{id}/update', [TipePembayaranController::class, 'update'])->name('tipe-pembayaran.update');
     Route::delete('tipe-pembayaran/{id}/destroy', [TipePembayaranController::class, 'destroy'])->name('tipe-pembayaran.destroy');
+
+    Route::get('account', [AccountController::class, 'index'])->name('account.index');
+    Route::get('account/create', [AccountController::class, 'create'])->name('account.create');
+    Route::post('account/store', [AccountController::class, 'store'])->name('account.store');
+    Route::get('account/{id}/edit', [AccountController::class, 'edit'])->name('account.edit');
+    Route::put('account/{id}/update', [AccountController::class, 'update'])->name('account.update');
+    Route::delete('account/{id}/destroy', [AccountController::class, 'destroy'])->name('account.destroy');
 
     Route::get('transaksi-pembayaran', [TransaksiPembayaran::class, 'index'])->name('transaksi-pembayaran');
     Route::get('transaksi-pembayaran/create', [TransaksiPembayaran::class, 'create'])->name('transaksi-pembayaran.create');
