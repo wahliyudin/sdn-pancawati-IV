@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(SettingSeeder::class);
         $this->call(PanitiaSeeder::class);
+        $this->call(TypeOfPaymentSeeder::class);
     }
 }

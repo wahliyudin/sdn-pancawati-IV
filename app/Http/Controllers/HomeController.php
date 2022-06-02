@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ItemPayment;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -11,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use PDF;
 use ZipArchive;
 
 class HomeController extends Controller

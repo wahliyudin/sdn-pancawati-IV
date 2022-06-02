@@ -16,8 +16,8 @@ class PanitiaSeeder extends Seeder
     {
         Panitia::create([
             'name' => 'Administrator',
-            'email' => 'admin@admin.com',
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => '123456789',
         ]);
     }
 }

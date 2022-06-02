@@ -7,9 +7,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Tarif Pembayaran</h3>
-                        <a href="" class="btn btn-sm btn-primary float-right"><i class="fas fa-plus mr-2"></i>
-                            Tambah
-                            Data</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -76,7 +73,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["copy", "csv", "excel", "pdf", "print"]
             }).buttons().container().appendTo('#tarif-pembayaran_wrapper .col-md-6:eq(0)');
         });
     </script>
