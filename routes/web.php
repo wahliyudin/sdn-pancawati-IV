@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\PanitiaLoginController;
 use App\Http\Controllers\EncryptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Panitia\AccountController;
+use App\Http\Controllers\Panitia\LaporanController;
 use App\Http\Controllers\Panitia\PembayaranController;
 use App\Http\Controllers\Panitia\PendaftaranController;
 use App\Http\Controllers\Panitia\PengaturanController;
@@ -66,6 +67,9 @@ Route::middleware(['auth.panitia:panitia'])->prefix('panitia')->name('panitia.')
     'exportBuktiPembayaran'])->name('exports.bukti-pembayaran');
 
     Route::get('download-zip', [HomeController::class, 'downloadZip'])->name('backup');
+
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('exports/laporan', [LaporanController::class, 'export'])->name('laporan.export');
 });
 
 Route::get('panitia-login', [PanitiaLoginController::class, 'showLoginForm'])->name('panitia-login-form');

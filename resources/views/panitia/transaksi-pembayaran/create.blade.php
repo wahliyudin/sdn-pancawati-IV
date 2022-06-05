@@ -9,6 +9,18 @@
                         <form action="{{ route('panitia.payment') }}" method="post" class="align-items-end">
                             @csrf
                             <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Akun Kas</label>
+                                        <select name="account_id" required class="form-control select2" style="width: 100%;">
+                                            <option selected="selected" disabled>-- pilih --</option>
+                                            @foreach ($accounts as $account)
+                                                <option value="{{ $account->id }}">{{ $account->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Siswa</label>
@@ -35,7 +47,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row col-md-6">
+                                <div class="row col-md-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Tanggal</label>
@@ -75,7 +87,7 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label>change</label>
+                                    <label>Kembalian</label>
                                     <input type="text" name="change" value="Rp. 0" readonly class="change form-control">
                                 </div>
                             </div>

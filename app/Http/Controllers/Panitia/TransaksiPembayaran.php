@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Panitia;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
+use App\Models\CashIn;
 use App\Models\ItemPayment;
 use App\Models\TypeOfPayment;
 use App\Models\User;
@@ -53,7 +55,8 @@ class TransaksiPembayaran extends Controller
             ],
             'students' => User::with('identity', 'payments')->where('status_kelulusan', User::STATUS_LULUS)->get(),
             'payment_number' => generatePaymentNumber(new ItemPayment(), 'NC', 'payment_number'),
-            'type_of_payments' => TypeOfPayment::latest()->get()
+            'type_of_payments' => TypeOfPayment::latest()->get(),
+            'accounts' => Account::latest()->get()
         ]);
     }
 
@@ -86,13 +89,20 @@ class TransaksiPembayaran extends Controller
         ItemPayment::create([
             'payment_id' => $payment->id,
             'panitia_id' => auth()->user()->id,
-            'payment_number' => generatePaymentNumber(new ItemPayment(), 'PN', 'payment_number'),
+            'payment_number' => $data['payment_number'],
             'billing' => $data['payment'],
             'change' => $data['change'],
             'description' => $data['description'],
             'tanggal' => $data['tanggal']
         ]);
-        return back()->with('success', 'Data berhasil disimpan');
+        CashIn::create([
+            'account_id' => $data['account_id'],
+            'no_cek' => $data['payment_number'],
+            'tanggal' => $data['tanggal'],
+            'keterangan' => $data['description'],
+            'jumlah_bayar' => $data['payment']
+        ]);
+        return redirect()->route('panitia.transaksi-pembayaran')->with('success', 'Data berhasil disimpan');
     }
 
     public function detail($id)

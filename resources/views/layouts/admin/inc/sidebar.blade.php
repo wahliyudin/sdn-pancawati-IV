@@ -119,6 +119,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('panitia.laporan.index') }}">
+                        <i class="nav-icon fas fa-file-contract"></i>
+                        <p>
+                            Laporan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('panitia.backup') }}">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
