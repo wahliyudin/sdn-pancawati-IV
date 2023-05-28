@@ -58,7 +58,7 @@
                             method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Jenis Pembayaran</label>
+                                <label>Siswa</label>
                                 <select name="student_id" required class="form-control select2" style="width: 100%;">
                                     <option selected="selected" disabled>-- pilih --</option>
                                     @foreach ($students as $student)
@@ -128,7 +128,6 @@
         .select2-container .select2-selection--single {
             height: calc(2.25rem + 4px) !important;
         }
-
     </style>
 @endpush
 @push('script')

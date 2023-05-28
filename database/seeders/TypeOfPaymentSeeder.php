@@ -20,13 +20,9 @@ class TypeOfPaymentSeeder extends Seeder
                 'description' => 'Untuk membayar seragam'
             ],
             [
-                'name' => 'Biaya Bangunan',
-                'description' => 'Untuk membayar Bangunan'
+                'name' => 'Biaya Buku',
+                'description' => 'Untuk membayar Buku'
             ],
-            [
-                'name' => 'Biaya Pendaftaran',
-                'description' => 'Untuk membayar Pendaftaran'
-            ]
         ];
 
         foreach ($type_of_payments as $item) {
