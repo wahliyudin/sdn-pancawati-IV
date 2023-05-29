@@ -10,7 +10,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo_me.png') }}">
     <!-- App title -->
-    <title>SD PUPUK KUJANG CIKAMPEK - Login</title>
+    <title>{{ env('APP_NAME') }} - Login</title>
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -23,7 +23,6 @@
         .account-logo-box {
             background-color: #359e78;
         }
-
     </style>
 </head>
 

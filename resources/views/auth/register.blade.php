@@ -10,7 +10,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo_me.png') }}">
     <!-- App title -->
-    <title>SD PUPUK KUJANG CIKAMPEK - Registrasi</title>
+    <title>{{ env('APP_NAME') }} - Registrasi</title>
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -27,7 +27,6 @@
         label[for=filestyle-0] {
             margin-bottom: 0;
         }
-
     </style>
 </head>
 
