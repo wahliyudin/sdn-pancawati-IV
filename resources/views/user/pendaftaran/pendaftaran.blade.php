@@ -84,7 +84,7 @@
                 @else
                     <div class="row text-center">
                         <div class="col-sm-12">
-                            <h3 class="m-t-20">{{ __('PPDB SD PUPUK KUJANG CIKAMPEK') }} <br>
+                            <h3 class="m-t-20">{{ env('APP_NAME') }} <br>
                                 {{ __('Ringkasan Pendaftaran') }}</h3>
                             <div class="border mx-auto d-block m-b-20"></div>
                         </div>
