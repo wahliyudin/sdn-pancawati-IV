@@ -36,7 +36,6 @@
             background-color: #4CAF50;
             color: white;
         }
-
     </style>
 </head>
 
@@ -45,7 +44,7 @@
         <tbody>
             <tr>
                 <td>
-                    <span style="font-size: 25px;">SD PUPUK KUJANG CIKAMPEK</span>
+                    <span style="font-size: 25px;">{{ env('APP_NAME') }}</span>
                 </td>
                 <td style="text-align: right;">
                     <span style="font-size: 20px;">Bukti Pembayaran</span>

@@ -81,10 +81,9 @@ class User extends Authenticatable
         elseif ($this->status_kelulusan == 3)
             return 'Berkas Pendaftaran tidak valid';
         elseif ($this->status_kelulusan == 4)
-            return 'Selamat! Kamu dinyatakan lulus pada tahapan seleksi berkas calon peserta didik baru di SD PUPUK KUJANG CIKAMPEK.';
+            return 'Selamat! Kamu dinyatakan lulus pada tahapan seleksi berkas calon peserta didik baru di ' . env('APP_NAME') . '.';
         elseif ($this->status_kelulusan == 5)
-            return 'Maaf! kamu dinyatakan tidak lulus pada tahapan seleksi berkas calon peserta didik baru SD PUPUK
-            KUJANG CIKAMPEK';
+            return 'Maaf! kamu dinyatakan tidak lulus pada tahapan seleksi berkas calon peserta didik baru ' . env('APP_NAME');
         return 'Berkas Belum dikirim';
     }
 
