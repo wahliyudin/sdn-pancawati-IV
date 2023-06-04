@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <label for="nama_ibu">Nama ibu</label>
                     <input type="text" class="form-control {{ $errors->has('nama_ibu') ? ' is-invalid' : '' }}"
-                        id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu', $orang_tua->mother->nama ?? '') }}"
+                        id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu', $orang_tua->mother?->nama ?? '') }}"
                         placeholder="Nama ibu">
                     @error('nama_ibu')
                         <p class="invalid-feedback">{{ $message }}</p>
@@ -92,7 +92,7 @@
                     <input type="text"
                         class="form-control {{ $errors->has('tempat_lahir_ibu') ? ' is-invalid' : '' }}"
                         id="tempat_lahir_ibu" name="tempat_lahir_ibu"
-                        value="{{ old('tempat_lahir_ibu', $orang_tua->mother->tempat_lahir ?? '') }}"
+                        value="{{ old('tempat_lahir_ibu', $orang_tua->mother?->tempat_lahir ?? '') }}"
                         placeholder="Tempat Lahir ibu">
                     @error('tempat_lahir_ibu')
                         <p class="invalid-feedback">{{ $message }}</p>
@@ -101,8 +101,8 @@
                 <div class="form-group">
                     <label for="email_ibu">E-Mail ibu</label>
                     <input type="email" class="form-control {{ $errors->has('email_ibu') ? ' is-invalid' : '' }}"
-                        id="email_ibu" name="email_ibu" value="{{ old('email_ibu', $orang_tua->mother->email ?? '') }}"
-                        placeholder="E-Mail ibu">
+                        id="email_ibu" name="email_ibu"
+                        value="{{ old('email_ibu', $orang_tua->mother?->email ?? '') }}" placeholder="E-Mail ibu">
                     @error('email_ibu')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
@@ -114,7 +114,7 @@
                     <input type="text"
                         class="form-control {{ $errors->has('pekerjaan_ibu') ? ' is-invalid' : '' }}"
                         id="pekerjaan_ibu" name="pekerjaan_ibu"
-                        value="{{ old('pekerjaan_ibu', $orang_tua->mother->pekerjaan ?? '') }}"
+                        value="{{ old('pekerjaan_ibu', $orang_tua->mother?->pekerjaan ?? '') }}"
                         placeholder="Pekerjaan ibu">
                     @error('pekerjaan_ibu')
                         <p class="invalid-feedback">{{ $message }}</p>
@@ -126,7 +126,7 @@
                         <input type="text" name="tanggal_lahir_ibu"
                             class="form-control datetimepicker-input {{ $errors->has('tanggal_lahir_ibu') ? ' is-invalid' : '' }}"
                             data-target="#tanggal_lahir_ibu"
-                            value="{{ old('tanggal_lahir_ibu', $orang_tua->mother->tanggal_lahir ?? '') }}">
+                            value="{{ old('tanggal_lahir_ibu', $orang_tua->mother?->tanggal_lahir ?? '') }}">
                         <div class="input-group-append" data-target="#tanggal_lahir_ibu"
                             data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -140,7 +140,7 @@
                     <label for="no_hp_ibu">No.Telp ibu</label>
                     <input type="number" class="form-control {{ $errors->has('no_hp_ibu') ? ' is-invalid' : '' }}"
                         id="no_hp_ibu" name="no_hp_ibu"
-                        value="{{ old('no_hp_ibu', $orang_tua->mother->no_hp ?? '') }}" placeholder="No.Telp ibu">
+                        value="{{ old('no_hp_ibu', $orang_tua->mother?->no_hp ?? '') }}" placeholder="No.Telp ibu">
                     @error('no_hp_ibu')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
