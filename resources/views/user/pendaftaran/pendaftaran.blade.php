@@ -15,7 +15,7 @@
                         {{ $message }}
                     </div>
                 @endif
-                @if (in_array(auth()->user()->status_kelulusan, [0, -1]))
+                @if (in_array(auth()->user()?->status_kelulusan, [0, -1]))
                     <!-- Custom Tabs -->
                     <div class="card">
                         <div class="card-header d-flex p-0">
@@ -60,7 +60,7 @@
                                         @csrf
                                         <div class="box box-info padding-1" style="width: 80vw;">
                                             <div class="box-body">
-                                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                                <input type="hidden" name="user_id" value="{{ auth()->user()?->id }}">
                                                 <p><label for="checkbox"><input type="checkbox" id="checkbox"> Dengan
                                                         mengirim
                                                         data
@@ -90,25 +90,25 @@
                         </div>
                     </div>
 
-                    @if (auth()->user()->kelulusan_final != null)
+                    @if (auth()->user()?->kelulusan_final != null)
                         <div class="row">
                             <div class="col-12">
                                 <div
-                                    class="alert {{ auth()->user()->kelulusan_final == 'Lulus' ? 'alert-success' : 'alert-danger' }}">
+                                    class="alert {{ auth()->user()?->kelulusan_final == 'Lulus' ? 'alert-success' : 'alert-danger' }}">
                                     <h1 align="center">
-                                        {{ auth()->user()->kelulusan_final == 'Lulus' ? 'Selamat!' : 'Maaf!' }}
-                                        Anda dinyatakan <b>"{{ auth()->user()->kelulusan_final }}"</b> Sebagai siswa</h1>
-                                    @if (auth()->user()->kelulusan_final == 'Lulus')
+                                        {{ auth()->user()?->kelulusan_final == 'Lulus' ? 'Selamat!' : 'Maaf!' }}
+                                        Anda dinyatakan <b>"{{ auth()->user()?->kelulusan_final }}"</b> Sebagai siswa</h1>
+                                    @if (auth()->user()?->kelulusan_final == 'Lulus')
                                         <br>
                                         <center>
-                                            <h1>Nama : {{ auth()->user()->identity->nama }}</h1>
-                                            <h1>NISN : {{ auth()->user()->identity->NISN }}</h1>
+                                            <h1>Nama : {{ auth()->user()?->identity?->nama }}</h1>
+                                            <h1>NISN : {{ auth()->user()?->identity?->NISN }}</h1>
                                         </center>
                                     @endif
                                 </div>
                             </div>
 
-                            @if (auth()->user()->kelulusan_final == 'Lulus')
+                            @if (auth()->user()?->kelulusan_final == 'Lulus')
                                 <div class="col-12">
                                     <center>
                                         SILAHKAN DAFTAR ULANG DENGAN MEMBAWA PERSYARATAN SEBAGAI BERIKUT :
@@ -142,8 +142,8 @@
 
                                         <br>
                                         <br>
-                                        <button class="btn btn-success" onclick="window.print()"><i
-                                                class="fa fa-print"></i> Cetak</button>
+                                        <button class="btn btn-success" onclick="window.print()"><i class="fa fa-print"></i>
+                                            Cetak</button>
                                     </center>
                                 </div>
                             @endif
@@ -157,14 +157,14 @@
 
                         <div class="row">
                             <div class="col-12">
-                                @if (auth()->user()->status_kelulusan > 3)
+                                @if (auth()->user()?->status_kelulusan > 3)
                                     <div
-                                        class="alert {{ auth()->user()->status_kelulusan == 4 ? 'alert-success' : 'alert-danger' }}">
-                                        <h4>{{ auth()->user()->status_pendaftaran }}</h4>
-                                        @if (auth()->user()->catatan_kelulusan)
+                                        class="alert {{ auth()->user()?->status_kelulusan == 4 ? 'alert-success' : 'alert-danger' }}">
+                                        <h4>{{ auth()->user()?->status_pendaftaran }}</h4>
+                                        @if (auth()->user()?->catatan_kelulusan)
                                             <br>
                                             <b>Catatan :</b>
-                                            <p>{{ auth()->user()->catatan_kelulusan }}</p>
+                                            <p>{{ auth()->user()?->catatan_kelulusan }}</p>
                                         @endif
                                     </div>
                                 @endif
@@ -190,7 +190,7 @@
                                 <div class="text-center card-box">
                                     <div class="card p-2">
                                         <div class="thumb-xl member-thumb m-b-10 mx-auto d-block">
-                                            <img src="{{ Storage::url(auth()->user()->identity->pas_foto_url) }}"
+                                            <img src="{{ Storage::url(auth()->user()?->identity?->pas_foto_url) }}"
                                                 class="rounded-circle img-thumbnail" alt="profile-image"
                                                 style="width:125px;height:125px;object-fit:cover;object-position:center;">
                                             <i class="mdi mdi-star-circle member-star text-success"
@@ -198,22 +198,22 @@
                                         </div>
 
                                         <div class="">
-                                            <h4 class="m-b-5">{{ auth()->user()->identity->nama }}</h4>
+                                            <h4 class="m-b-5">{{ auth()->user()?->identity?->nama }}</h4>
 
-                                            @if (auth()->user()->status_kelulusan < 4)
+                                            @if (auth()->user()?->status_kelulusan < 4)
                                                 <p>
-                                                    {{ auth()->user()->status_pendaftaran }}
+                                                    {{ auth()->user()?->status_pendaftaran }}
                                                 </p>
                                             @endif
 
                                             <div class="text-left">
                                                 <p class="text-muted font-13">
                                                     <strong>NIK :</strong>
-                                                    <br><span>{{ auth()->user()->identity->nik }}</span>
+                                                    <br><span>{{ auth()->user()?->identity?->nik }}</span>
                                                 </p>
 
                                                 <p class="text-muted font-13"><strong>Email :</strong>
-                                                    <br><span>{{ auth()->user()->email }}</span>
+                                                    <br><span>{{ auth()->user()?->email }}</span>
                                                 </p>
 
                                             </div>
@@ -223,7 +223,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-9 {{ auth()->user()->status_kelulusan == 5 ? 'd-none' : '' }}">
+                            <div class="col-12 col-sm-9 {{ auth()->user()?->status_kelulusan == 5 ? 'd-none' : '' }}">
                                 @include('panitia.siswa.ringkasan')
                             </div>
                         </div>
@@ -366,7 +366,7 @@
         var all_tabs = document.querySelectorAll('.nav-link')
         var _target = localStorage.getItem('tab_active')
 
-        @if (auth()->user()->status_kelulusan == 1)
+        @if (auth()->user()?->status_kelulusan == 1)
             if (_target == '#kirim-data') {
                 window.localStorage.removeItem('tab_active')
                 _target = false
