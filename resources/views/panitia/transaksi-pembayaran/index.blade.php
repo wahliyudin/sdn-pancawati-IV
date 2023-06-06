@@ -26,7 +26,7 @@
                                 @foreach ($students as $student)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $student->identity->nama }}</td>
+                                        <td>{{ $student->identity?->nama }}</td>
                                         <td>Rp. {{ numberFormat($student->payments->sum('billing')) }}</td>
                                         <td>Rp. {{ numberFormat($student->payments->sum('total_payment')) }}</td>
                                         <td>{{ $student->payments->sum('billing') == $student->payments->sum('total_payment') ? 'Lunas' : 'Belum Lunas' }}

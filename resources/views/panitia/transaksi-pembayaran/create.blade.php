@@ -28,7 +28,7 @@
                                             style="width: 100%;">
                                             <option selected="selected" disabled>-- pilih --</option>
                                             @foreach ($students as $student)
-                                                <option value="{{ $student->id }}">{{ $student->identity->nama }}
+                                                <option value="{{ $student->id }}">{{ $student->identity?->nama }}
                                                 </option>
                                             @endforeach
                                         </select>

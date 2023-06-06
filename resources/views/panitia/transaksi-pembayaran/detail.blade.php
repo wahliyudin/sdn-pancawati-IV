@@ -7,11 +7,11 @@
                 @foreach ($payments as $payment)
                     <div class="card">
                         <div class="card-header">
-                            <span class="text-lg">{{ $payment->typeOfPayment->name }}</span>
+                            <span class="text-lg">{{ $payment->typeOfPayment?->name }}</span>
                             <a href="{{ route('panitia.exports.bukti-pembayaran', [
                                 'student_id' => Crypt::encrypt($student->id),
-                                'type_of_payment_id' => Crypt::encrypt($payment->typeOfPayment->id),
-                                'name_type_of_payment' => Crypt::encrypt($payment->typeOfPayment->name),
+                                'type_of_payment_id' => Crypt::encrypt($payment->typeOfPayment?->id),
+                                'name_type_of_payment' => Crypt::encrypt($payment->typeOfPayment?->name),
                             ]) }}"
                                 target="_blank" class="btn btn-sm btn-success mr-2 float-right"><i
                                     class="fas fa-print mr-1"></i>
