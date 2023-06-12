@@ -66,7 +66,8 @@ class TransaksiPembayaran extends Controller
             'payment_number' => 'required',
             'payment' => 'required',
             'description' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required',
+            'billing' => 'required',
         ]);
         $data = $request->all();
 

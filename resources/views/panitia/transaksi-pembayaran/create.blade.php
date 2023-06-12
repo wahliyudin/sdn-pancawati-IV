@@ -12,7 +12,8 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Akun Kas</label>
-                                        <select name="account_id" required class="form-control select2" style="width: 100%;">
+                                        <select name="account_id" required class="form-control select2"
+                                            style="width: 100%;">
                                             <option selected="selected" disabled>-- pilih --</option>
                                             @foreach ($accounts as $account)
                                                 <option value="{{ $account->id }}">{{ $account->name }}
@@ -77,7 +78,8 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label>Jumlah Tagihan</label>
-                                    <input type="text" name="billing" readonly class="billing form-control" id="rupiah1">
+                                    <input type="text" name="billing" readonly class="billing form-control"
+                                        id="rupiah1">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Jumlah Pembayaran</label>
@@ -88,7 +90,8 @@
 
                                 <div class="form-group col-md-4">
                                     <label>Kembalian</label>
-                                    <input type="text" name="change" value="Rp. 0" readonly class="change form-control">
+                                    <input type="text" name="change" value="Rp. 0" readonly
+                                        class="change form-control">
                                 </div>
                             </div>
                             <div class="row">
@@ -117,7 +120,6 @@
         .select2-container .select2-selection--single {
             height: calc(2.25rem + 4px) !important;
         }
-
     </style>
 @endpush
 @push('script')
@@ -160,7 +162,7 @@
         function getBilling(id_tipe, id) {
             if (id_tipe && id) {
                 $.ajax({
-                    url: 'http://ppdb-angel.loc/api/tipe-pembayaran/' + id_tipe + '/siswa/' + id,
+                    url: '/api/tipe-pembayaran/' + id_tipe + '/siswa/' + id,
                     type: 'get',
                     success: function(response) {
                         if (response.billing - response.total_payment == 0) {
