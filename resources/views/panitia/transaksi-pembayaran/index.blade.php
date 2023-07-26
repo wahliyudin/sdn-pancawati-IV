@@ -29,7 +29,7 @@
                                         <td>{{ $student->identity?->nama }}</td>
                                         <td>Rp. {{ numberFormat($student->payments->sum('billing')) }}</td>
                                         <td>Rp. {{ numberFormat($student->payments->sum('total_payment')) }}</td>
-                                        <td>{{ $student->payments->sum('billing') == $student->payments->sum('total_payment') ? 'Lunas' : 'Belum Lunas' }}
+                                        <td>{{ $student->payments->sum('billing') + $student->payments->sum('total_payment') == 0 ? 'Belum ada tarif' : ($student->payments->sum('billing') == $student->payments->sum('total_payment') ? 'Lunas' : 'Belum Lunas') }}
                                         </td>
                                         <td>
                                             <div class="d-flex align-item-center">
