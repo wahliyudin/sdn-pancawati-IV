@@ -59,19 +59,6 @@
                                         @csrf
                                         <div class="form-group row">
                                             <div class="col-12">
-                                                <input class="form-control @error('nisn') is-invalid @enderror"
-                                                    name="nisn" type="number" required="" placeholder="NISN"
-                                                    value="{{ old('nisn') }}">
-
-                                                @error('nisn')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12">
                                                 <input class="form-control @error('name') is-invalid @enderror"
                                                     name="name" type="text" required="" placeholder="Name"
                                                     value="{{ old('name') }}">

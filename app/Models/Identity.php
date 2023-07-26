@@ -12,7 +12,6 @@ class Identity extends Model
     protected $fillable = [
         'user_id',
         'nama',
-        'nisn',
         'nik',
         'jenis_kelamin',
         'tempat_lahir',
@@ -41,7 +40,6 @@ class Identity extends Model
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'nisn' => 'required',
             'jumlah_saudara' => 'required',
             'anak_ke' => 'required',
             'agama' => 'required',

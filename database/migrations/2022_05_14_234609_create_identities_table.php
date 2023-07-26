@@ -17,7 +17,6 @@ class CreateIdentitiesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('nama');
-            $table->string('nisn');
             $table->string('nik');
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');

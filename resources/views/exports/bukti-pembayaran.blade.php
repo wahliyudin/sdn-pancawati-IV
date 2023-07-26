@@ -60,11 +60,6 @@
                 <td style="padding: 0 10px;">:</td>
                 <td>{{ $student->identity->nama }}</td>
             </tr>
-            <tr>
-                <td>NISN</td>
-                <td style="padding: 0 10px;">:</td>
-                <td>{{ $student->identity->nisn }}</td>
-            </tr>
         </tbody>
     </table>
     <span style="font-size: 20px; padding: 10px 0;">{{ $name_type_of_payment }}</span>

@@ -50,15 +50,6 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="nisn">NISN</label>
-                    <input disabled type="number" name="nisn"
-                        class="form-control {{ $errors->has('nisn') ? ' is-invalid' : '' }}" id="nisn"
-                        value="{{ old('nisn', $identitas->nisn) }}" placeholder="NISN">
-                    @error('nisn')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form-group">
                     <label for="nik">NIK</label>
                     <input disabled type="number" name="nik"
                         class="form-control {{ $errors->has('nik') ? ' is-invalid' : '' }}" id="nik"
@@ -210,7 +201,8 @@
                 <div class="form-group">
                     <label for="pas_foto">Pas Foto</label> <small>(Dengan latar belakang berwarna biru)</small>
                     @if ($identitas->pas_foto_url)
-                        <br><img src="{{ Storage::url($identitas->pas_foto_url) }}" alt="" width="200px"><br>
+                        <br><img src="{{ Storage::url($identitas->pas_foto_url) }}" alt=""
+                            width="200px"><br>
                         <p></p>
                     @endif
                 </div>

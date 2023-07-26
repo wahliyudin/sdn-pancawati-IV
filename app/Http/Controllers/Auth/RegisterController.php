@@ -73,7 +73,6 @@ class RegisterController extends Controller
         return User::create([
             'name' => Arr::get($data, 'name'),
             'email' => Arr::get($data, 'email'),
-            'nisn' => Arr::get($data, 'nisn'),
             'status_verifikasi' => 0,
             'status_kelulusan' => 0,
             'password' => $this->password,

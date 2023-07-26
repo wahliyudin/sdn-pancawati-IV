@@ -58,11 +58,6 @@
                 <td style="padding: 0 10px;">:</td>
                 <td>{{ $student->identity->nama }}</td>
             </tr>
-            <tr>
-                <td>NISN</td>
-                <td style="padding: 0 10px;">:</td>
-                <td>{{ $student->identity->nisn }}</td>
-            </tr>
         </tbody>
     </table>
     <table class="data">

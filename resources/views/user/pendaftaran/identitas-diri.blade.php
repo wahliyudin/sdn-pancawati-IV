@@ -5,9 +5,9 @@
             <div class="col-12 col-sm-6">
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input name="nama" type="text" class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}"
-                        id="nama" value="{{ old('nama', $identitas->nama ?? auth()->user()->name) }}"
-                        placeholder="Nama">
+                    <input name="nama" type="text"
+                        class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}" id="nama"
+                        value="{{ old('nama', $identitas->nama ?? auth()->user()->name) }}" placeholder="Nama">
                     @error('nama')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
@@ -46,15 +46,6 @@
                         </div>
                     </div>
                     @error('tanggal_lahir')
-                        <p class="invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="nisn">NISN</label>
-                    <input type="number" name="nisn"
-                        class="form-control {{ $errors->has('nisn') ? ' is-invalid' : '' }}" id="nisn"
-                        value="{{ old('nisn', $identitas->nisn) }}" placeholder="NISN">
-                    @error('nisn')
                         <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                 </div>
@@ -210,11 +201,12 @@
                 <div class="form-group">
                     <label for="pas_foto">Pas Foto</label> <small>(Dengan latar belakang berwarna biru)</small>
                     @if ($identitas->pas_foto_url)
-                        <br><img src="{{ Storage::url($identitas->pas_foto_url) }}" alt="" width="200px"><br>
+                        <br><img src="{{ Storage::url($identitas->pas_foto_url) }}" alt=""
+                            width="200px"><br>
                         <p></p>
                     @endif
                     <div class="custom-file">
-                        <input name="pas_foto_url" type="file"
+                        <input name="pas_foto_url" accept="image/*" type="file"
                             class="custom-file-input {{ $errors->has('pas_foto_url') ? ' is-invalid' : '' }}"
                             id="customFile">
                         <label class="custom-file-label" for="customFile">Choose file</label>
