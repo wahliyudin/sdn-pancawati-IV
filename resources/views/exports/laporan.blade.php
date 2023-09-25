@@ -37,7 +37,6 @@
             background-color: #ffffff;
             line-height: 20px;
         }
-
     </style>
 </head>
 
@@ -55,8 +54,11 @@
             <th>Tanggal</th>
             <th>Keterangan</th>
             <th>Debet</th>
-            <th>Kredit</th>
+            <th>Pendapatan</th>
         </tr>
+        @php
+            $grandTotal = 0;
+        @endphp
         @foreach ($cash_ins as $cash_in)
             <tr>
                 <td style="padding: 0 0 0 5px;"></td>
@@ -93,7 +95,15 @@
                     Rp. {{ numberFormat($cash_in->jumlah_bayar) }}
                 </td>
             </tr>
+            @php
+                $grandTotal += $cash_in->jumlah_bayar;
+            @endphp
         @endforeach
+        <tr>
+            <td colspan="3">Jumlah</td>
+            <td>Rp. {{ numberFormat($grandTotal) }}</td>
+            <td>Rp. {{ numberFormat($grandTotal) }}</td>
+        </tr>
     </table>
 </body>
 
